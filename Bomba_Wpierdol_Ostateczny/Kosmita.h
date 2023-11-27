@@ -3,6 +3,8 @@
 
 #include <string>
 
+class KapitanBomba;
+
 class Kosmita {
 private:
     // Atrybuty (pola prywatne)
@@ -23,10 +25,13 @@ public:
     Kosmita(std::string n, int h, int s, int e, int i, int a, int w);
 
     // Metody
-    void attack();
+    void attack(KapitanBomba& bomba);
     void defend();
 
     // Gettery i Settery (dobre praktyki enkapsulacji)
+
+    bool isAlive() const;
+
     std::string getName() const;
     void setName(std::string n);
 

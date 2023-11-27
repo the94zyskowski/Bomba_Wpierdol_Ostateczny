@@ -1,12 +1,22 @@
 #include "Kosmita.h"
+#include "KapitanBomba.h"
+
 #include <iostream>
 
 Kosmita::Kosmita(std::string n, int h, int s, int e, int i, int a, int w) : name(n), health(h), strength(s), endurance(e), intelligence(i), accuracy(a), wkurwienie(w) { std::cout << n <<" jestem!" << std::endl; }
 
 // Metody
 
-void Kosmita::attack()
+void Kosmita::attack(KapitanBomba& bomba)
 {
+    if (bomba.isAlive()) {
+        double damage = (strength * accuracy) / 10.0 + wkurwienie;
+        double newHealth = bomba.getHealth() - damage;
+        bomba.setHealth(newHealth);
+    }
+    else {
+        std::cout << "£ooo! Ale mu zajeba³e!" << std::endl;
+    }
 }
 
 void Kosmita::defend() {
@@ -14,6 +24,9 @@ void Kosmita::defend() {
 }
 
 // Gettery i Settery (dobre praktyki enkapsulacji)
+
+bool Kosmita::isAlive() const { return is_alive; }
+
 std::string Kosmita::getName() const { return name; }
 void Kosmita::setName(std::string n) { name = n; }
 

@@ -1,4 +1,6 @@
 #include "KapitanBomba.h"
+#include "Kosmita.h"
+
 #include <iostream>
 
 KapitanBomba::KapitanBomba(std::string n, int h, int s, int e, int i, int a, int w) : name(n), health(h), strength(s), endurance(e), intelligence(i), accuracy(a), wkurwienie(w) { std::cout << "Czo³em têpe chuje!" << std::endl; }
@@ -7,9 +9,14 @@ KapitanBomba::KapitanBomba(std::string n, int h, int s, int e, int i, int a, int
 
 void KapitanBomba::attack_z_karabinka(Kosmita &kosmita)
 {
-    double damage = (strength*accuracy)/10.0+wkurwienie;
-    double newHealth = kosmita.getHealth() - damage;
-    kosmita.setHealth(newHealth);
+    if (kosmita.isAlive()) {
+        double damage = (strength * accuracy) / 10.0 + wkurwienie;
+        double newHealth = kosmita.getHealth() - damage;
+        kosmita.setHealth(newHealth);
+    }
+    else {
+        std::cout << "Przerwaæ ogieñ! Jebany gryzie ju¿ piach." << std::endl;
+    }
 }
 
 void KapitanBomba::defend_get_down() {
@@ -17,6 +24,10 @@ void KapitanBomba::defend_get_down() {
 }
 
 // Gettery i Settery (dobre praktyki enkapsulacji)
+
+
+bool KapitanBomba::isAlive() const { return is_alive; }
+
 std::string KapitanBomba::getName() const { return name; }
 void KapitanBomba::setName(std::string n) { name = n; }
 

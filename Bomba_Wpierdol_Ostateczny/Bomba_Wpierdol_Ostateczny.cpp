@@ -1,6 +1,4 @@
 ﻿#include "Bomba_Wpierdol_Ostateczny.h"
-#include "KapitanBomba.h"
-#include "Kosmita.h"
 
 #include <string>
 #include <locale>

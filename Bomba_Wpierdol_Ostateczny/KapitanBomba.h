@@ -2,7 +2,8 @@
 #define KAPITAN_BOMBA_H
 
 #include <string>
-#include "Kosmita.h"
+
+class Kosmita;
 
 class KapitanBomba {
 private:
@@ -28,6 +29,9 @@ public:
     void defend_get_down();
 
     // Gettery i Settery (dobre praktyki enkapsulacji)
+
+    bool isAlive() const;
+
     std::string getName() const;
     void setName(std::string n);
 
