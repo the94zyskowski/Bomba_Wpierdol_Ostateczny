@@ -1,10 +1,9 @@
-#ifndef KAPITAN_BOMBA_H
-#define KAPITAN_BOMBA_H
+#ifndef KOSMITA_H
+#define KOSMITA_H
 
 #include <string>
-#include "Kosmita.h"
 
-class KapitanBomba {
+class Kosmita {
 private:
     // Atrybuty (pola prywatne)
     //Atrybuty poza zdrowiem w zakresie od 0 do 10, ze poziomem standardowym na 5.
@@ -21,11 +20,11 @@ private:
 public:
 
     // Konstruktor
-    KapitanBomba(std::string n, int h, int s, int e, int i, int a, int w);
+    Kosmita(std::string n, int h, int s, int e, int i, int a, int w);
 
     // Metody
-    void attack_z_karabinka(Kosmita& kosmita);
-    void defend_get_down();
+    void attack();
+    void defend();
 
     // Gettery i Settery (dobre praktyki enkapsulacji)
     std::string getName() const;
@@ -53,7 +52,7 @@ public:
 
     // Destruktor
 
-    ~KapitanBomba();
+    ~Kosmita();
 };
 
-#endif // KAPITAN_BOMBA_H
+#endif // KOSMITA_H

@@ -5,8 +5,11 @@ KapitanBomba::KapitanBomba(std::string n, int h, int s, int e, int i, int a, int
 
 // Metody
 
-void KapitanBomba::attack_z_karabinka()
+void KapitanBomba::attack_z_karabinka(Kosmita &kosmita)
 {
+    double damage = (strength*accuracy)/10.0+wkurwienie;
+    double newHealth = kosmita.getHealth() - damage;
+    kosmita.setHealth(newHealth);
 }
 
 void KapitanBomba::defend_get_down() {
@@ -18,7 +21,16 @@ std::string KapitanBomba::getName() const { return name; }
 void KapitanBomba::setName(std::string n) { name = n; }
 
 int KapitanBomba::getHealth() const { return health; }
-void KapitanBomba::setHealth(int h) { health = h; }
+void KapitanBomba::setHealth(int h) {
+    if (h <= 0) {
+            // Ustaw stan obiektu jako "nie¿ywy"
+            is_alive = false;
+            health = 0;
+        }
+        else {
+            health = h;
+        }
+    }
 
 int KapitanBomba::getStrength() const { return strength; }
 void KapitanBomba::setStrength(int s) { strength = s; }
@@ -40,5 +52,5 @@ void KapitanBomba::setWkurwienie(int w) { wkurwienie = w; }
 //Destruktor
 
 KapitanBomba::~KapitanBomba() {
-    std::cout << "Kurwa, maj¹ mnie!\nSu³tan Kosmitów zwyciê¿y³..." << std::endl;
+    std::cout << "Kurwa, maj¹ mnie!" << std::endl;
 }
