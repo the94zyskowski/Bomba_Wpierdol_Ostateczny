@@ -26,7 +26,7 @@ public:
 
     // Metody
     void attack(KapitanBomba& bomba);
-    void defend();
+    int defend();
 
     // Gettery i Settery (dobre praktyki enkapsulacji)
 

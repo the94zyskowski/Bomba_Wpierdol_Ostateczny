@@ -26,7 +26,7 @@ public:
 
     // Metody
     void attack_z_karabinka(Kosmita& kosmita);
-    void defend_get_down();
+    int defend();
 
     // Gettery i Settery (dobre praktyki enkapsulacji)
 

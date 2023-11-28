@@ -2,6 +2,8 @@
 #include "Kosmita.h"
 
 #include <iostream>
+#include <random>
+#include <cmath> 
 
 KapitanBomba::KapitanBomba(std::string n, int h, int s, int e, int i, int a, int w) : name(n), health(h), strength(s), endurance(e), intelligence(i), accuracy(a), wkurwienie(w) { std::cout << "Czo³em têpe chuje!" << std::endl; }
 
@@ -10,7 +12,10 @@ KapitanBomba::KapitanBomba(std::string n, int h, int s, int e, int i, int a, int
 void KapitanBomba::attack_z_karabinka(Kosmita &kosmita)
 {
     if (kosmita.isAlive()) {
-        double damage = (strength * accuracy) / 10.0 + wkurwienie;
+        std::cout << "Jeb! Jeb! Jeb!" << std::endl;
+        int defense = kosmita.defend();
+        double tempDamage = (static_cast<double>(strength * accuracy) / defense) + wkurwienie;
+        int damage = static_cast<int>(std::round(tempDamage));
         double newHealth = kosmita.getHealth() - damage;
         kosmita.setHealth(newHealth);
     }
@@ -19,8 +24,35 @@ void KapitanBomba::attack_z_karabinka(Kosmita &kosmita)
     }
 }
 
-void KapitanBomba::defend_get_down() {
-    // Logika obrony
+int KapitanBomba::defend() {
+    // Tworzenie generatora liczb losowych
+    std::random_device rd;  // Urz¹dzenie do generowania ziarna
+    std::mt19937 gen(rd()); // Generator (Mersenne Twister)
+
+    // Definiowanie rozk³adu zmiennoprzecinkowego od 0 do 1
+    std::uniform_real_distribution<> dis(0, 1);
+
+    // Obliczanie poziomu obrony
+    double result = (static_cast<double>(strength) + endurance + wkurwienie) / 3;
+    int defense_level = static_cast<int>(std::round(result)); // Zak³adamy, ¿e to wartoœæ od 0 do 10
+
+    // Konwersja poziomu obrony na prawdopodobieñstwo
+    double probability = defense_level / 10.0;
+
+    // Generowanie losowej liczby i decyzja o aktywacji obrony
+    if (dis(gen) < probability) {
+        std::cout << "Obrona aktywowana!" << std::endl;
+        if (defense_level > 1) {
+            return defense_level;
+        }
+        else {
+            return 1;
+        }
+    }
+    else {
+        std::cout << "Obrona nieaktywowana." << std::endl;
+        return 1;
+    }
 }
 
 // Gettery i Settery (dobre praktyki enkapsulacji)
@@ -63,5 +95,5 @@ void KapitanBomba::setWkurwienie(int w) { wkurwienie = w; }
 //Destruktor
 
 KapitanBomba::~KapitanBomba() {
-    std::cout << "Kurwa, maj¹ mnie!" << std::endl;
+    std::cout << std::endl;
 }
