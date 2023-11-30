@@ -18,22 +18,64 @@ struct Pole {
         : teren(t), przeciwnicy(p), znalezionyPrzedmiot(z) {}
 };
 
-void get_rodzaj_terenu(Pole wybrane_pole) {
-    switch (wybrane_pole.teren) {
-    case Pole::RodzajTerenu::Trawa:
-        std::cout << "Teren: Trawa" << std::endl;
-        break;
-    case Pole::RodzajTerenu::Piasek:
-        std::cout << "Teren: Piasek" << std::endl;
-        break;
-    case Pole::RodzajTerenu::Woda:
-        std::cout << "Teren: Woda" << std::endl;
-        break;
-        // Dodaj pozostałe przypadki...
-    default:
-        std::cout << "Nieznany teren" << std::endl;
+int get_rodzaj_terenu(std::vector<std::vector<Pole>> plansza, int x, int y) {
+    // Odczytanie rodzaju terenu
+    if (x >= 0 and y >= 0) {
+        Pole wybranePole = plansza[x][y];
+        switch (wybranePole.teren) {
+        case Pole::RodzajTerenu::Trawa:
+            std::cout << "Teren: Trawa" << std::endl;
+            return 1;
+            break;
+        case Pole::RodzajTerenu::Piasek:
+            std::cout << "Teren: Piasek" << std::endl;
+            return 2;
+            break;
+        case Pole::RodzajTerenu::Woda:
+            std::cout << "Teren: Woda" << std::endl;
+            return 3;
+            break;
+        case Pole::RodzajTerenu::Góry:
+            std::cout << "Teren: Woda" << std::endl;
+            return 4;
+            break;
+        case Pole::RodzajTerenu::Przepaść:
+            return 5;
+            std::cout << "Teren: Woda" << std::endl;
+            break;
+
+        default:
+            std::cout << "Nieznany teren" << std::endl;
+            return 0;
+        }
+    }
+    else
+    {
+        return -1; //błąd
     }
 
+
+}
+
+void get_przeciwnik(std::vector<std::vector<Pole>> plansza, int x, int y) {
+    // Sprawdzenie, czy na polu jest przeciwnik
+    Pole wybranePole = plansza[x][y];
+    if (!wybranePole.przeciwnicy.empty()) {
+        std::cout << "Na polu jest przeciwnik!" << std::endl;
+        // Tutaj możesz dodać logikę do obsługi przeciwników
+        for (const auto& przeciwnik : wybranePole.przeciwnicy) {
+            // Wykonaj działania na każdym przeciwniku
+            std::cout << "Przeciwnik: " << przeciwnik->getName() << std::endl;
+        }
+    }
+}
+
+void get_przedmiot(std::vector<std::vector<Pole>> plansza, int x, int y) {
+    // Sprawdzenie, czy na polu jest znaleziony przedmiot
+    Pole wybranePole = plansza[x][y];
+    if (wybranePole.znalezionyPrzedmiot) {
+        std::cout << "Znaleziono przedmiot: " << *wybranePole.znalezionyPrzedmiot << std::endl;
+    }
 }
 
 int main()
@@ -50,31 +92,14 @@ int main()
         std::make_shared<Robot>("Kutaminator-01", 8, 3, 6, 4, 3, 2, 0)
         }, "Miecz laserowy");
 
-    // Przykład pozycji na planszy
     int x = 1; // indeks wiersza
     int y = 2; // indeks kolumny
 
-    // Odczyt danych z pola o współrzędnych (x, y)
-    Pole wybranePole = plansza[x][y];
+    get_rodzaj_terenu(plansza, x, y);
 
-    // Odczytanie rodzaju terenu
-    get_rodzaj_terenu(wybranePole);
+    get_przeciwnik(plansza, x, y);
 
-    // Sprawdzenie, czy na polu jest przeciwnik
-    if (!wybranePole.przeciwnicy.empty()) {
-        std::cout << "Na polu jest przeciwnik!" << std::endl;
-        // Tutaj możesz dodać logikę do obsługi przeciwników
-        for (const auto& przeciwnik : wybranePole.przeciwnicy) {
-            // Wykonaj działania na każdym przeciwniku
-            std::cout << "Przeciwnik: " << przeciwnik->getName() << std::endl;
-        }
-    }
-
-
-    // Sprawdzenie, czy na polu jest znaleziony przedmiot
-    if (wybranePole.znalezionyPrzedmiot) {
-        std::cout << "Znaleziono przedmiot: " << *wybranePole.znalezionyPrzedmiot << std::endl;
-    }
+    get_przedmiot(plansza, x, y);
 
 	return 0;
 }
