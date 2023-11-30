@@ -9,3 +9,4 @@
 #include "Postac.h"
 #include "KapitanBomba.h"
 #include "Kosmita.h"
+#include "Robot.h"

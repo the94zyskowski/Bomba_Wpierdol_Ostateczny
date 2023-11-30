@@ -5,8 +5,6 @@
 
 #include <string>
 
-class KapitanBomba;
-
 class Kosmita : public Postac {
 public:
     Kosmita(std::string n, int h, int s, int e, int i, int a, int w, int dodatkowaS);

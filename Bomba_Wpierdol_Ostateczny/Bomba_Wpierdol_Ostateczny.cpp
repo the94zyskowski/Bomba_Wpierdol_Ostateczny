@@ -31,7 +31,8 @@ int main()
     // Ustawienie konkretnego pola z przeciwnikami
     plansza[1][2] = Pole(Pole::RodzajTerenu::Piasek, {
         std::make_shared<Kosmita>("Michaś", 20, 3, 7, 4, 3, 1, 0),
-        std::make_shared<Kosmita>("Zdzichu", 15, 5, 6, 3, 2, 2, 1)
+        std::make_shared<Kosmita>("Zdzichu", 15, 5, 6, 3, 2, 2, 1),
+        std::make_shared<Robot>("Kutaminator-01", 8, 3, 6, 4, 3, 2, 0)
         });
 
 	return 0;

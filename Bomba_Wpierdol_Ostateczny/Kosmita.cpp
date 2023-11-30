@@ -1,5 +1,4 @@
 #include "Kosmita.h"
-#include "KapitanBomba.h"
 
 #include <iostream>
 
