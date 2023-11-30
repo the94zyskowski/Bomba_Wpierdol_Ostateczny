@@ -10,3 +10,4 @@
 #include "KapitanBomba.h"
 #include "Kosmita.h"
 #include "Robot.h"
+#include "Plansza.h"
