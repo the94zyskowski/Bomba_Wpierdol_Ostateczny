@@ -7,7 +7,7 @@
 
 class Kosmita : public Postac {
 public:
-    Kosmita(std::string n, int h, int s, int e, int i, int a, int w, int dodatkowaS);
+    Kosmita(std::string n, int h, int s, int e, int i, int a, int w, int X, int Y, int dodatkowaS);
 
     void atakSpecjalny(Postac& cel);
 

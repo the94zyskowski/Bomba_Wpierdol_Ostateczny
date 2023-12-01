@@ -7,7 +7,7 @@
 
 class Robot : public Postac {
 public:
-    Robot(std::string n, int h, int s, int e, int i, int a, int w, int dodatkowaS);
+    Robot(std::string n, int h, int s, int e, int i, int a, int w, int X, int Y, int dodatkowaS);
 
     void atakSpecjalny(Postac& cel);
 

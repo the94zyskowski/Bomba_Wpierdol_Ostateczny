@@ -5,7 +5,7 @@
 
 class Postac {
 public:
-    Postac(std::string n, int h, int s, int e, int i, int a, int w);
+    Postac(std::string n, int h, int s, int e, int i, int a, int w, int X, int Y);
     virtual ~Postac();
 
     virtual void attack(Postac& postac);
@@ -36,6 +36,10 @@ public:
     int getWkurwienie() const;
     void setWkurwienie(int w);
 
+    void setPosition(int newX, int newY);
+
+    std::pair<int, int> getPosition() const;
+
 protected:
     std::string name;
     int health;
@@ -45,6 +49,8 @@ protected:
     int accuracy;
     int wkurwienie;
     bool is_alive = true;
+    int pozycja_X;
+    int pozycja_Y;
 };
 
 #endif // POSTAC_H

@@ -6,7 +6,7 @@
 #include <random>
 #include <cmath> 
 
-Postac::Postac(std::string n, int h, int s, int e, int i, int a, int w) : name(n), health(h), strength(s), endurance(e), intelligence(i), accuracy(a), wkurwienie(w) {}
+Postac::Postac(std::string n, int h, int s, int e, int i, int a, int w, int X, int Y) : name(n), health(h), strength(s), endurance(e), intelligence(i), accuracy(a), wkurwienie(w), pozycja_X(X), pozycja_Y(Y) {}
 
 
 void Postac::attack(Postac& postac)
@@ -86,6 +86,15 @@ void Postac::setAccuracy(int a) { accuracy = a; }
 
 int Postac::getWkurwienie() const { return wkurwienie; }
 void Postac::setWkurwienie(int w) { wkurwienie = w; }
+
+void Postac::setPosition(int newX, int newY) {
+    pozycja_X = newX;
+    pozycja_Y = newY;
+}
+
+std::pair<int, int> Postac::getPosition() const {
+    return { pozycja_X, pozycja_Y };
+}
 
 Postac::~Postac() {
     // Tutaj mo¿na umieœciæ kod potrzebny do destrukcji

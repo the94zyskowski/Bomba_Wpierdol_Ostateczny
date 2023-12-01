@@ -6,7 +6,7 @@
 
 class KapitanBomba : public Postac {
 public:
-    KapitanBomba(std::string n, int h, int s, int e, int i, int a, int w, int dodatkowaS);
+    KapitanBomba(std::string n, int h, int s, int e, int i, int a, int w, int X, int Y, int dodatkowaS);
 
     void atakSpecjalny(Postac& cel);
 
