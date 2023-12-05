@@ -11,6 +11,8 @@ public:
 
     void atakSpecjalny(Postac& cel);
 
+    std::string get_class_name();
+
 private:
     int dodatkowaSila;
 };

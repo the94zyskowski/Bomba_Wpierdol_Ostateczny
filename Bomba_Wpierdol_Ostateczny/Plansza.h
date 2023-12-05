@@ -7,6 +7,7 @@
 #include <string>
 
 #include "Postac.h"
+#include "KapitanBomba.h"
 
 struct Pole {
     enum class RodzajTerenu { Trawa, Piasek, Woda, Góry, Przepaœæ };
@@ -19,7 +20,9 @@ struct Pole {
 };
 
 Pole::RodzajTerenu get_rodzaj_terenu(const std::vector<std::vector<Pole>>& plansza, int x, int y);
+std::string get_rodzaj_terenu_tekstowo(std::vector<std::vector<Pole>> plansza, int x, int y);
 void get_przeciwnik(const std::vector<std::vector<Pole>>& plansza, int x, int y);
+void bomba_attack_przeciwnicy(KapitanBomba bomba, const std::vector<std::vector<Pole>>& plansza, int x, int y);
 void get_przedmiot(const std::vector<std::vector<Pole>>& plansza, int x, int y);
 
 #endif // PLANSZA_H

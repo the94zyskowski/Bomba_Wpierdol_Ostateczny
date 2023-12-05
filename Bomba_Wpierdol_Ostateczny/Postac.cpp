@@ -12,7 +12,7 @@ Postac::Postac(std::string n, int h, int s, int e, int i, int a, int w, int X, i
 void Postac::attack(Postac& postac)
 {
     if (postac.isAlive()) {
-        std::cout << "Jeb! Jeb! Jeb!" << std::endl;
+        std::cout << "Postaæ <" << name << "> atakuje!" << std::endl;
         int defense = postac.defend();
         double tempDamage = (static_cast<double>(strength * accuracy) / defense) + wkurwienie;
         int damage = static_cast<int>(std::round(tempDamage));
